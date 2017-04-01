@@ -8,15 +8,15 @@
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
--- Table: Colecao
-DROP TABLE IF EXISTS Colecao;
+-- Table: Biblioteca
+DROP TABLE IF EXISTS Biblioteca;
 
-CREATE TABLE Colecao (
-    idColecao      INTEGER PRIMARY KEY ON CONFLICT ROLLBACK AUTOINCREMENT
+CREATE TABLE Biblioteca (
+    idBiblioteca      INTEGER PRIMARY KEY ON CONFLICT ROLLBACK AUTOINCREMENT
                            UNIQUE ON CONFLICT ROLLBACK
                            NOT NULL ON CONFLICT ROLLBACK,
-    totalColecao   INTEGER,
-    colecaoUsuario INTEGER REFERENCES usuario (idUsuario) 
+    totalBiblioteca   INTEGER,
+    BibliotecaUsuario INTEGER REFERENCES usuario (idUsuario) 
                            NOT NULL
 );
 
@@ -48,7 +48,7 @@ CREATE TABLE obra (
     ISBN            STRING,
     edicao          STRING,
     editora         STRING,
-    anoDePublicacao INTEGER,
+    anoDePublicacao DATE,
     emprestado      BOOLEAN,
     tagObra         INTEGER REFERENCES tag (idTag),
     containerObra   INTEGER REFERENCES container (idContainer) 
