@@ -60,7 +60,7 @@
             android:layout_height="0dp"
             android:text="@string/LoginFacebook"
             android:id="@+id/facebook_button"
-            android:background="@drawable/custom_button_login"
+
             android:textColor="@color/colorAccent"
             android:onClick="loginFacebook"
             />
@@ -73,7 +73,7 @@
             android:layout_height="0dp"
             android:text="@string/LoginGoogle"
             android:id="@+id/google_button"
-            android:background="@drawable/custom_button_login"
+
             android:textColor="@color/colorAccent"
             android:onClick="loginGoogle"
             />
