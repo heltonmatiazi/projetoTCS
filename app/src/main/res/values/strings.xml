@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Cade Meu Livro</string>
+    <string name="checkBoxEmprestado">Emprestado</string>
+    <string name="buttonConcluir">Concluir</string>
+    <string name="buttonCancelar">Cancelar</string>
+    <string name="LoginFacebook">Fazer Login com Facebook</string>
+    <string name="LoginGoogle">Fazer Login com Google</string>
+    <string name="buttonEditar">Editar</string>
+    <string name="buttonExcluir">Excluir</string>
+    <string name="textViewLogin">Faça login com uma de suas contas:</string>
+    <string name="facebook_app_id">188132491696991</string>
+    <string name="loading">Carregando</string>
+    <string name="server_client_id">000000000</string>
+    <string name="logo_txt">logo</string>
+    <string name="image_view_lista">Image View</string>
+    <string name="google">google</string>
+    <string name="communication_signed_out">Desconectado</string>
+</resources>
