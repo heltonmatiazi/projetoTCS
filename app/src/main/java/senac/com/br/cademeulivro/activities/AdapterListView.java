@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import senac.com.br.cademeulivro.R;
 import senac.com.br.cademeulivro.activities.*;
+import senac.com.br.cademeulivro.model.Obra;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by joaos on 01/04/2017.
@@ -20,10 +22,10 @@ import java.util.ArrayList;
 public class AdapterListView extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private ArrayList<ItemListView> itens;
+    private List<Obra> itens;
 
 
-    public AdapterListView(Context context, ArrayList<ItemListView> itens) {
+    public AdapterListView(Context context, List<Obra> itens) {
 
         this.itens = itens;
         inflater=LayoutInflater.from(context);
@@ -50,7 +52,7 @@ public class AdapterListView extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
 
         //Resgatar o item do ListView pelo position
-        ItemListView item=itens.get(position);
+        Obra item= (Obra) itens.get(position);
 
         //Resgatar o layout a ser preenchido
         view=inflater.inflate(R.layout.activity_item_lista,null);
@@ -62,7 +64,7 @@ public class AdapterListView extends BaseAdapter {
 
         titulo.setText(item.getTitulo());
         autor.setText(item.getAutor());
-        capa.setImageResource(item.getCapa());
+        capa.setImageResource(R.drawable.capa); //hardcoded por enquanto
 
         return view;
     }

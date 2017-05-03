@@ -16,4 +16,11 @@
     <string name="google">google</string>
     <string name="communication_signed_out">Desconectado</string>
     <string name="logout">Logout</string>
+    <string name="hint_titulo">Título</string>
+    <string name="hint_autor">Autor</string>
+    <string name="hint_editora">Editora</string>
+    <string name="hint_ano">Ano</string>
+    <string name="hint_isbn">0000000000000</string>
+    <string name="hint_desc">Descrição</string>
+    <string name="label_emprestado">Emprestado</string>
 </resources>

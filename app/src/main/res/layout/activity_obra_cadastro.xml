@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:id="@+id/activity_obra_cadastro"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:columnCount="2"
+                                             android:rowCount="9"
+                                             tools:context="senac.com.br.cademeulivro.activities.ObraCadastroActivity"
+                                             tools:layout_editor_absoluteY="81dp"
+                                             tools:layout_editor_absoluteX="0dp">
+
+    <ImageView
+        android:id="@+id/imageCapa"
+        android:layout_width="180dp"
+        android:layout_height="280dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/capa"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTitulo"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="@string/hint_titulo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/imageCapa"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <EditText
+        android:id="@+id/editAutor"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="@string/hint_autor"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editTitulo"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/imageCapa"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <EditText
+        android:id="@+id/editEditora"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="@string/hint_editora"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editAutor"
+        app:layout_constraintLeft_toRightOf="@+id/imageCapa"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <EditText
+        android:id="@+id/editAnoPublicacao"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="@string/hint_ano"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/imageCapa"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEditora"
+        app:layout_constraintHorizontal_bias="0.0"/>
+
+
+    <ImageView
+        android:id="@+id/imgContainer"
+        android:src="@drawable/common_google_signin_btn_icon_light_normal"
+        android:layout_width="108dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/checkboxEmprestado"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/editDescricao"/>
+
+    <CheckBox
+        android:id="@+id/checkboxEmprestado"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="@string/label_emprestado"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageCapa"
+        android:layout_marginStart="8dp"/>
+
+    <EditText
+        android:id="@+id/editDescricao"
+        android:layout_width="369dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/hint_desc"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxEmprestado"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="370dp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editDescricao"
+        android:id="@+id/linearLayout3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.862">
+
+        <Button
+            android:id="@+id/btnCancela"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/buttonCancelar"
+            />
+
+        <Button
+            android:id="@+id/btnConfirma"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/buttonConcluir"
+            android:onClick="salvarLivro"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="179dp"
+        android:layout_height="49dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@+id/imageCapa"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/editAnoPublicacao"
+        android:id="@+id/linearLayout2"
+        android:layout_marginEnd="8dp">
+
+        <EditText
+            android:id="@+id/editISBN"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:hint="@string/hint_isbn"
+            android:inputType="number"
+            />
+
+        <ImageButton
+            android:id="@+id/btnEscanear"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick=""
+            android:src="@mipmap/ic_camera"
+            />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="180dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxEmprestado"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/editDescricao"/>
+
+</android.support.constraint.ConstraintLayout>
