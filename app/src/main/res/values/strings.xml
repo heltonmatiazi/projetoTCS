@@ -15,4 +15,6 @@
     <string name="image_view_lista">Image View</string>
     <string name="google">google</string>
     <string name="communication_signed_out">Desconectado</string>
+    <string name="logout">Logout</string>
+    <string name="login_error">Erro ao Realizar Login</string>
 </resources>
