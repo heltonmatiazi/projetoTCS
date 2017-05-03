@@ -1,39 +1,11 @@
 package senac.com.br.cademeulivro.activities;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.Application;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
@@ -42,18 +14,16 @@ import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+// por gentileza não removam esses imports. Não perguntem.
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.google.android.gms.common.api.ResultCallback;
 import java.util.concurrent.Callable;
-
+import android.view.View.OnClickListener;
 
 import senac.com.br.cademeulivro.R;
 import senac.com.br.cademeulivro.helpers.InstanceController;
@@ -76,7 +46,7 @@ public class LoginActivity extends AppCompatActivity   {
         FacebookSdk.sdkInitialize(getApplicationContext());
         mFacebookCallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
-
+        // instanciando o botão do google
         mGoogleSignInButton = (SignInButton)findViewById(R.id.google_button);
         mGoogleSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -84,6 +54,7 @@ public class LoginActivity extends AppCompatActivity   {
                 signInWithGoogle();
             }
         });
+        // instanciando o botão do facebook
         mFacebookSignInButton = (LoginButton)findViewById(R.id.facebook_button);
         mFacebookSignInButton.registerCallback(mFacebookCallbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -114,25 +85,21 @@ public class LoginActivity extends AppCompatActivity   {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // resultado do intent GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()) {
                 final GoogleApiClient client = mGoogleApiClient;
-
-                handleSignInResult(new Callable<Void>() {
+                    handleSignInResult(new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
                         if (client != null) {
-
                             Auth.GoogleSignInApi.signOut(client).setResultCallback(
                                     new ResultCallback<Status>() {
                                         @Override
                                         public void onResult(Status status) {
                                             Log.d(LoginActivity.class.getCanonicalName(),
                                                     status.getStatusMessage());
-
                                         /* TODO: handle logout failures */
                                         }
                                     }
@@ -141,12 +108,10 @@ public class LoginActivity extends AppCompatActivity   {
                         return null;
                     }
                 });
-
             }
         } else {
             mFacebookCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
-
     }
     private void signInWithGoogle() {
         if(mGoogleApiClient != null) {
@@ -173,4 +138,5 @@ public class LoginActivity extends AppCompatActivity   {
             startActivity(new Intent(this, MainActivity.class));
         }
     }
+
 }
