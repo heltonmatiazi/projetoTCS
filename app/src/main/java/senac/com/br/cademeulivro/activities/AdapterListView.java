@@ -31,6 +31,9 @@ public class AdapterListView extends BaseAdapter {
         inflater=LayoutInflater.from(context);
     }
 
+    public void setItens(List<Obra> itens) {
+        this.itens = itens;
+    }
 
     @Override
     public int getCount() {

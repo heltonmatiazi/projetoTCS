@@ -39,19 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void createListView(){
-        Cursor cursor = mDatabase.query("Obra",null, null, null, null, null, null);
-        ObraCursorWrapper wrapper = new ObraCursorWrapper(cursor);
-        itens = new ArrayList<>();
-
-        try {
-            wrapper.moveToFirst();
-            while(!wrapper.isAfterLast()) {
-                itens.add(wrapper.getObra());
-                wrapper.moveToNext();
-            }
-        } finally {
-            wrapper.close();
-        }
+        itens = getListaObras();
 
         adapterListView=new AdapterListView(this,itens);
         listView.setAdapter(adapterListView);
@@ -59,7 +47,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        @Override
+    private List<Obra> getListaObras() {
+        Cursor cursor = mDatabase.query("Obra",null, null, null, null, null, null);
+        ObraCursorWrapper wrapper = new ObraCursorWrapper(cursor);
+        List<Obra> lista = new ArrayList<>();
+
+        try {
+            wrapper.moveToFirst();
+            while(!wrapper.isAfterLast()) {
+                lista.add(wrapper.getObra());
+                wrapper.moveToNext();
+            }
+        } finally {
+            wrapper.close();
+        }
+        return lista;
+    }
+
+    @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             getMenuInflater().inflate(R.menu.menu_main, menu);
             return true;
@@ -70,5 +75,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        @Override
+        public void onResume() {
+            super.onResume();
+            if(adapterListView == null) {
+                adapterListView = new AdapterListView(this,getListaObras());
+                listView.setAdapter(adapterListView);
+            } else {
+                adapterListView.setItens(getListaObras());
+                adapterListView.notifyDataSetChanged();
+            }
+        }
 
 }
