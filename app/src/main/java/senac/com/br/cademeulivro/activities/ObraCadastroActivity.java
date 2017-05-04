@@ -1,6 +1,7 @@
 package senac.com.br.cademeulivro.activities;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -58,5 +59,10 @@ public class ObraCadastroActivity extends AppCompatActivity {
 
         mDatabase.insert("Obra",null, valores);
         finish();
+    }
+    public void cancelarCadastro(View v){
+        mDatabase.close();
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent );
     }
 }

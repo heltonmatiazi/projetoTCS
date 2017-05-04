@@ -81,9 +81,9 @@
 
     <ImageView
         android:id="@+id/imgContainer"
-        android:src="@drawable/common_google_signin_btn_icon_light_normal"
-        android:layout_width="108dp"
-        android:layout_height="68dp"
+        android:src="@mipmap/caixa_icon2"
+        android:layout_width="46dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         android:layout_marginRight="8dp"
@@ -143,6 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/buttonCancelar"
+            android:onClick="cancelarCadastro"
             />
 
         <Button

@@ -45,7 +45,7 @@
         android:onClick="cadastrarLivro"
         android:elevation="3dp"
         android:id="@+id/fbMain"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/btnColor"
         />
 
 </android.support.design.widget.CoordinatorLayout>
