@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity   {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // inicializando a sdk do facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
         mFacebookCallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity   {
         });
         // instanciando o botão do facebook
         mFacebookSignInButton = (LoginButton)findViewById(R.id.facebook_button);
+        // registrando a ação de callBack que invoca o login no facebook
         mFacebookSignInButton.registerCallback(mFacebookCallbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -68,12 +69,10 @@ public class LoginActivity extends AppCompatActivity   {
                             }
                         });
                     }
-
                     @Override
                     public void onCancel() {
                         handleSignInResult(null);
                     }
-
                     @Override
                     public void onError(FacebookException error) {
                         Log.d(LoginActivity.class.getCanonicalName(), error.getMessage());
@@ -100,7 +99,6 @@ public class LoginActivity extends AppCompatActivity   {
                                         public void onResult(Status status) {
                                             Log.d(LoginActivity.class.getCanonicalName(),
                                                     status.getStatusMessage());
-                                        /* TODO: handle logout failures */
                                         }
                                     }
                             );
@@ -117,14 +115,12 @@ public class LoginActivity extends AppCompatActivity   {
         if(mGoogleApiClient != null) {
             mGoogleApiClient.disconnect();
         }
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
         final Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }

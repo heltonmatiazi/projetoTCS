@@ -18,4 +18,11 @@
     <string name="logout">Logout</string>
     <string name="login_error">Erro ao Realizar Login</string>
     <string name="action_settings">Log Out</string>
+    <string name="hint_titulo">Título</string>
+    <string name="hint_autor">Autor</string>
+    <string name="hint_editora">Editora</string>
+    <string name="hint_ano">Ano</string>
+    <string name="hint_isbn">0000000000000</string>
+    <string name="hint_desc">Descrição</string>
+    <string name="label_emprestado">Emprestado</string>
 </resources>

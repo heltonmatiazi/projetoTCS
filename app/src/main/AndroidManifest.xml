@@ -9,26 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
         <uses-permission android:name="android.permission.INTERNET"/>
-        <activity android:name="senac.com.br.cademeulivro.activities.LoginActivity"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.facebook.FacebookActivity"
-                  android:configChanges=
-                      "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
-                  android:label="@string/app_name" />
-        <activity android:name="senac.com.br.cademeulivro.activities.MainActivity">
-
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".activities.MainActivity">
         </activity>
-        <activity android:name="senac.com.br.cademeulivro.activities.ObraDetalhadaActivity" ></activity>
+        <activity android:name=".activities.ObraDetalhadaActivity"/>
+        <activity android:name=".activities.ObraCadastroActivity">
+        </activity>
     </application>
 
 </manifest>
