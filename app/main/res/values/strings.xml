@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">VirtualHelper</string>
+    <string name="checkBoxEmprestado">Emprestado</string>
+    <string name="buttonConcluir">Concluir</string>
+    <string name="buttonCancelar">Cancelar</string>
+    <string name="LoginFacebook">Fazer Login com Facebook</string>
+    <string name="LoginGoogle">Fazer Login com Google</string>
+    <string name="buttonEditar">Editar</string>
+    <string name="buttonExcluir">Excluir</string>
+    <string name="textViewLogin">Faça login com uma de suas contas:</string>
+    <string name="textViewTitulo">Título: </string>
+    <string name="textViewAutor">Autor: </string>
+    <string name="titulo">Título</string>
+    <string name="container">Container</string>
+    <string name="tags">Tags: </string>
+    <string name="salvar">Salvar</string>
+    <string name="local">Local: </string>
+    <string name="ultimaLimpeza">Última Limpeza: </string>
+    <string name="icone">Ícone: </string>
+    <string name="nome">Nome: </string>
+    <string name="isbn">Isbn:</string>
+    <string name="ano">Ano:</string>
+    <string name="textVContainer">Container:</string>
+    <string name="breveDescricao">Descrição:</string>
+    <string name="edicao">Edição: </string>
+</resources>

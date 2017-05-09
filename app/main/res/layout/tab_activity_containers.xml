@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joaos.virtualhelper.activity.tabs.ContainersActivity">
+
+    <LinearLayout
+        android:id="@+id/activity_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ic_left_arrow"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonLeft"
+                android:onClick="passaImagemEsquerda"
+                />
+
+            <ImageSwitcher
+                android:id="@+id/imageSwitcherCont"
+                android:layout_weight="5"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                />
+
+            <ImageButton
+                android:background="@android:color/transparent"
+                android:src="@mipmap/ic_right_arrow"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonRight"
+                android:onClick="passaImagemDireita"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            >
+
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="@string/nome"
+                    style="@style/textView_custom"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="@string/local"
+                    style="@style/textView_custom"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="@string/ultimaLimpeza"
+                    style="@style/textView_custom"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="@string/icone"
+                    style="@style/textView_custom"
+                    android:gravity="center"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/TextViewNomeCont"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/TextViewLocalCont"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/TextViewUltimaLimpCont"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/TextViewIconeCont"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="end|bottom"
+            android:layout_weight="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            >
+
+            <Button
+
+                android:layout_weight="100"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonEditar"
+                android:text="@string/buttonEditar"
+                android:onClick="containerEditar"
+
+                style="@style/buttonTheme"
+                />
+            <Button
+                android:layout_weight="100"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ButtonExcluir"
+                android:text="@string/buttonExcluir"
+                android:onClick="containerExcluir"
+                style="@style/buttonTheme"
+                />
+
+        </LinearLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_weight="0.86"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
