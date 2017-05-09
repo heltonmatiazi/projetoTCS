@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Container {
     private Integer idContainer;
+    private Integer idBiblioteca;
     private String nomeContainer;
     private int iconeContainer;
     private String localContainer;
@@ -13,6 +14,14 @@ public class Container {
 
     public Container() {
 
+    }
+
+    public Integer getIdBiblioteca() {
+        return idBiblioteca;
+    }
+
+    public void setIdBiblioteca(Integer idBiblioteca) {
+        this.idBiblioteca = idBiblioteca;
     }
 
     public List<Obra> getObrasContidas() {
