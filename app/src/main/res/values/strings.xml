@@ -23,4 +23,21 @@
     <string name="hint_isbn">0000000000000</string>
     <string name="hint_desc">Descrição</string>
     <string name="label_emprestado">Emprestado</string>
+
+
+    <string name="textViewTitulo">Título: </string>
+    <string name="textViewAutor">Autor: </string>
+    <string name="titulo">Título</string>
+    <string name="container">Container</string>
+    <string name="tags">Tags: </string>
+    <string name="salvar">Salvar</string>
+    <string name="local">Local: </string>
+    <string name="ultimaLimpeza">Última Limpeza: </string>
+    <string name="icone">Ícone: </string>
+    <string name="nome">Nome: </string>
+    <string name="isbn">Isbn:</string>
+    <string name="ano">Ano:</string>
+    <string name="textVContainer">Container:</string>
+    <string name="breveDescricao">Descrição:</string>
+    <string name="edicao">Edição: </string>
 </resources>

@@ -16,7 +16,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_reduzida"
+        android:src="@drawable/logo_nova_reduzida"
         android:alpha="0.4"
 
         android:id="@+id/imageView" />

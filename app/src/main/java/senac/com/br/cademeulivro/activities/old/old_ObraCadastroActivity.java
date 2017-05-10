@@ -1,4 +1,4 @@
-package senac.com.br.cademeulivro.activities;
+package senac.com.br.cademeulivro.activities.old;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +16,7 @@ import java.io.ByteArrayOutputStream;
 import senac.com.br.cademeulivro.R;
 import senac.com.br.cademeulivro.dao.DatabaseHelper;
 
-public class ObraCadastroActivity extends AppCompatActivity {
+public class old_ObraCadastroActivity extends AppCompatActivity {
     private SQLiteDatabase mDatabase;
     private EditText editTitulo, editAutor, editEditora, editDescricao, editISBN, editAnoPublicacao;
     private CheckBox emprestado;
@@ -25,7 +25,7 @@ public class ObraCadastroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_obra_cadastro);
+        setContentView(R.layout.old_activity_obra_cadastro);
         mDatabase = new DatabaseHelper(getApplicationContext()).getWritableDatabase();
 
         imgCapa = (ImageView) findViewById(R.id.imageCapa);

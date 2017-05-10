@@ -1,90 +1,164 @@
 package senac.com.br.cademeulivro.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import senac.com.br.cademeulivro.R;
-import senac.com.br.cademeulivro.dao.DatabaseHelper;
-import senac.com.br.cademeulivro.dao.ObraCursorWrapper;
-import senac.com.br.cademeulivro.model.Obra;
-
+import senac.com.br.cademeulivro.activities.edit.ObraDetalhadaEditActivity;
+import senac.com.br.cademeulivro.activities.tabs.tab_ContainersActivity;
+import senac.com.br.cademeulivro.activities.tabs.tab_ObrasActivity;
+import senac.com.br.cademeulivro.activities.tabs.tab_RecomendadosActivity;
+import senac.com.br.cademeulivro.activities.tabs.tab_TagsActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private SQLiteDatabase mDatabase;
-    private ListView listView;
-    private AdapterListView adapterListView;
-    private List<Obra> itens;
 
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private FloatingActionButton fab;
+
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDatabase = new DatabaseHelper(getApplicationContext()).getReadableDatabase();
-        listView = (ListView) findViewById(R.id.ListViewColecao);
-        createListView();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+
 
     }
 
 
-    public void createListView(){
-        itens = getListaObras();
+    public void fabFuncao(View v){
 
-        adapterListView=new AdapterListView(this,itens);
-        listView.setAdapter(adapterListView);
-        listView.setCacheColorHint(Color.CYAN);
+        CharSequence opcoes[] = new CharSequence[] {"Manualmente", "Escanear ISBN"};
 
-    }
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Cadastrar");
+        builder.setItems(opcoes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-    private List<Obra> getListaObras() {
-        Cursor cursor = mDatabase.query("Obra",null, null, null, null, null, null);
-        ObraCursorWrapper wrapper = new ObraCursorWrapper(cursor);
-        List<Obra> lista = new ArrayList<>();
+                if(which==0){
+                    Intent intent=new Intent(MainActivity.this,ObraDetalhadaEditActivity.class);
+                    startActivity(intent);
 
-        try {
-            wrapper.moveToFirst();
-            while(!wrapper.isAfterLast()) {
-                lista.add(wrapper.getObra());
-                wrapper.moveToNext();
+                }else{
+                    //Escanear isbn
+                }
+
             }
-        } finally {
-            wrapper.close();
-        }
-        return lista;
+        });
+        builder.show();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
 
-        public void cadastrarLivro(View v) {
-            Intent intent = new Intent(this,ObraCadastroActivity.class);
-            startActivity(intent);
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
-        public void onResume() {
-            super.onResume();
-            if(adapterListView == null) {
-                adapterListView = new AdapterListView(this,getListaObras());
-                listView.setAdapter(adapterListView);
-            } else {
-                adapterListView.setItens(getListaObras());
-                adapterListView.notifyDataSetChanged();
+        public Fragment getItem(int position) {
+
+            switch (position) {
+
+                case 0:
+                    tab_ObrasActivity tabObras=new tab_ObrasActivity();
+                    return tabObras;
+                case 1:
+                    tab_TagsActivity tabTags=new tab_TagsActivity();
+                    return tabTags;
+                case 2:
+                    tab_ContainersActivity tabContainers=new tab_ContainersActivity();
+                    return tabContainers;
+                case 3:
+                    tab_RecomendadosActivity tabRecomendados=new tab_RecomendadosActivity();
+                    return tabRecomendados;
+
+                default:
+                    return null;
+
             }
+
         }
+
+        @Override
+        public int getCount() {
+            // Show 4 total pages.
+            return 4;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "Obras";
+                case 1:
+                    return "Tags";
+                case 2:
+                    return "Containers";
+                case 3:
+                    return "Recomendados";
+            }
+            return null;
+        }
+
+    }
 
 }

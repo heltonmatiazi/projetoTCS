@@ -1,4 +1,4 @@
-package senac.com.br.cademeulivro.activities;
+package senac.com.br.cademeulivro.activities.old;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,23 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import senac.com.br.cademeulivro.R;
-import senac.com.br.cademeulivro.activities.*;
 import senac.com.br.cademeulivro.model.Obra;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by joaos on 01/04/2017.
  */
 
-public class AdapterListView extends BaseAdapter {
+public class old_AdapterListView extends BaseAdapter {
 
     private LayoutInflater inflater;
     private List<Obra> itens;
 
 
-    public AdapterListView(Context context, List<Obra> itens) {
+    public old_AdapterListView(Context context, List<Obra> itens) {
 
         this.itens = itens;
         inflater=LayoutInflater.from(context);
@@ -58,7 +56,7 @@ public class AdapterListView extends BaseAdapter {
         Obra item= (Obra) itens.get(position);
 
         //Resgatar o layout a ser preenchido
-        view=inflater.inflate(R.layout.activity_item_lista,null);
+        view=inflater.inflate(R.layout.old_activity_item_lista,null);
 
         //Resgatar os dois textviews e o imageview para insercao do conteudo
         TextView titulo=(TextView) view.findViewById(R.id.TextViewTituloLista);

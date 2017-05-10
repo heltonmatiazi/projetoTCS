@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
 
-    tools:context="senac.com.br.cademeulivro.activities.ContainerActivity">
+    tools:context="senac.com.br.cademeulivro.activities.old.old_ContainerActivity">
 
 
     <ImageSwitcher
@@ -18,13 +18,13 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_reduzida"
+            android:src="@drawable/logo_nova_reduzida"
             />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_reduzida"
+            android:src="@drawable/logo_nova_reduzida"
             />
 
     </ImageSwitcher>
