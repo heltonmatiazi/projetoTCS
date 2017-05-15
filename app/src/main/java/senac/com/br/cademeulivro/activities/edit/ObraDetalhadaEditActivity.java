@@ -1,6 +1,7 @@
 package senac.com.br.cademeulivro.activities.edit;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -10,10 +11,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.google.zxing.client.android.CaptureActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +34,7 @@ public class ObraDetalhadaEditActivity extends AppCompatActivity {
     private LinearLayout layoutTags;
     private AlertDialog dialog;
     private TextView tagCriar,textViewConteiner;
+    private EditText editIsbn;
     private AlertDialog.Builder builder;
     private String[] tags = new String[]{// Boolean array for initial selected items
             "horror",
@@ -61,7 +66,7 @@ public class ObraDetalhadaEditActivity extends AppCompatActivity {
 
 
         //capturando o FAB e enviando sua animacao quando clicado
-
+        editIsbn= (EditText) findViewById(R.id.editIsbn);
         fbMain= (FloatingActionButton) findViewById(R.id.fbMain);
         fb1= (FloatingActionButton) findViewById(R.id.fbTags);
         fb2= (FloatingActionButton) findViewById(R.id.fbContainer);
@@ -149,6 +154,12 @@ public class ObraDetalhadaEditActivity extends AppCompatActivity {
     }
 
     public void scannerIsbn(View v){
+        //intanciando o scanner numa intent
+        Intent intent = new Intent(getApplicationContext(),CaptureActivity.class);
+        intent.setAction("com.google.zxing.client.android.SCAN");
+        intent.putExtra("SAVE_HISTORY", false);
+        startActivityForResult(intent, 0);
+
     }
     public void obraDetalhadaEditConcluir (View v){
     }
@@ -160,6 +171,22 @@ public class ObraDetalhadaEditActivity extends AppCompatActivity {
 
         SingleChoiceClass dialogContainers=new SingleChoiceClass();
         dialogContainers.show(getSupportFragmentManager(),"dialogContainer");
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                //capturando o resultado do scanner
+                String contents = data.getStringExtra("SCAN_RESULT");
+                editIsbn.setText(contents);
+
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Falha ao ler o código!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
