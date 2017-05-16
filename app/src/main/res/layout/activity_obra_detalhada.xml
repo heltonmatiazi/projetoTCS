@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="senac.com.br.cademeulivro.activities.ObraDetalhadaActivity">
+    tools:context="senac.com.br.cademeulivro.activities.old.old_ObraDetalhadaActivity">
 
     <LinearLayout
         android:layout_weight="5"
@@ -84,18 +84,73 @@
         android:orientation="vertical"
         >
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/textView_custom"
+            android:text="@string/breveDescricao"
+            android:layout_marginLeft="5dp"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/TextViewBreveDesc"
+            style="@style/textView_custom"
             />
+
+
+
+
+        <LinearLayout  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/textVContainer"
+                style="@style/textView_custom"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/TextViewConteiner"
+                style="@style/textView_custom"
+                />
+
+        </LinearLayout>
+
+
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/TextViewConteiner"
+            android:text="@string/tags"
+            style="@style/textView_custom"
+            android:layout_marginLeft="5dp"
             />
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- input das tags como textview via codigo usando o
+                style = tag_style-->
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
 
     </LinearLayout>

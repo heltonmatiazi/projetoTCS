@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cade Meu Livro</string>
+    <string name="app_name">Cadê Meu Livro</string>
     <string name="checkBoxEmprestado">Emprestado</string>
     <string name="buttonConcluir">Concluir</string>
     <string name="buttonCancelar">Cancelar</string>
@@ -16,11 +16,29 @@
     <string name="google">google</string>
     <string name="communication_signed_out">Desconectado</string>
     <string name="logout">Logout</string>
+    <string name="login_error">Erro ao Realizar Login</string>
     <string name="hint_titulo">Título</string>
     <string name="hint_autor">Autor</string>
     <string name="hint_editora">Editora</string>
     <string name="hint_ano">Ano</string>
-    <string name="hint_isbn">0000000000000</string>
+    <string name="hint_isbn">ISBN</string>
     <string name="hint_desc">Descrição</string>
     <string name="label_emprestado">Emprestado</string>
+
+
+    <string name="textViewTitulo">Título: </string>
+    <string name="textViewAutor">Autor: </string>
+    <string name="titulo">Título</string>
+    <string name="container">Container</string>
+    <string name="tags">Tags: </string>
+    <string name="salvar">Salvar</string>
+    <string name="local">Local: </string>
+    <string name="ultimaLimpeza">Última Limpeza: </string>
+    <string name="icone">Ícone: </string>
+    <string name="nome">Nome: </string>
+    <string name="isbn">Isbn:</string>
+    <string name="ano">Ano:</string>
+    <string name="textVContainer">Container:</string>
+    <string name="breveDescricao">Descrição:</string>
+    <string name="edicao">Edição: </string>
 </resources>
