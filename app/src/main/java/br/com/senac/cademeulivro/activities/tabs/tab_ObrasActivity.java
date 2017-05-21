@@ -11,7 +11,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import br.com.senac.cademeulivro.R;
-import br.com.senac.cademeulivro.dao.DatabaseHelper;
+import br.com.senac.cademeulivro.helpers.DatabaseHelper;
 import br.com.senac.cademeulivro.dao.ObraDAO;
 import br.com.senac.cademeulivro.model.Obra;
 import br.com.senac.cademeulivro.util.adapter.AdapterListViewObra;
@@ -21,7 +21,6 @@ public class tab_ObrasActivity extends Fragment {
     private ObraDAO obraDao;
     private SQLiteDatabase mDatabase;
     private AdapterListViewObra adapterListView;
-    private List<Obra> itens;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,17 +29,24 @@ public class tab_ObrasActivity extends Fragment {
         mDatabase = DatabaseHelper.newInstance(getActivity());
         obraDao = new ObraDAO(mDatabase);
         listView = (ListView) rootView.findViewById(R.id.listaObras);
-        createListView();
-
+        refresh();
         return rootView;
     }
 
-
-    public void createListView(){
-        itens = obraDao.getListaObras();
-
-        adapterListView=new AdapterListViewObra(getActivity(),itens);
-        listView.setAdapter(adapterListView);
+    public void refresh() {
+        List<Obra> itens = obraDao.getListaObras();
+        if(adapterListView == null) {
+           adapterListView=new AdapterListViewObra(getActivity(),itens);
+           listView.setAdapter(adapterListView);
+       } else {
+            adapterListView.setItens(itens);
+            adapterListView.notifyDataSetChanged();
+       }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh();
+    }
 }

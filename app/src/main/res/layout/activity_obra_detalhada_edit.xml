@@ -7,7 +7,7 @@
                                              android:layout_height="match_parent"
                                              android:columnCount="2"
                                              android:rowCount="9"
-                                             tools:context="br.com.senac.cademeulivro.activities.ObraDetalhadaActivity"
+                                             tools:context="br.com.senac.cademeulivro.activities.edit.ObraDetalhadaEditActivity"
                                              tools:layout_editor_absoluteY="81dp"
                                              tools:layout_editor_absoluteX="0dp">
 
@@ -119,7 +119,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="370dp"/>
+        />
 
     <HorizontalScrollView
         android:layout_width="0dp"
@@ -159,7 +159,9 @@
         app:layout_constraintTop_toBottomOf="@+id/editDescricao"
         android:id="@+id/linearLayout3"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.862">
+        app:layout_constraintVertical_bias="0.862"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
 
         <Button
             android:id="@+id/btnCancela"
@@ -223,5 +225,6 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editDescricao"/>
+        app:layout_constraintBottom_toTopOf="@+id/editDescricao"
+        android:layout_marginStart="8dp"/>
 </android.support.constraint.ConstraintLayout>

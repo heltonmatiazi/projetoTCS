@@ -1,6 +1,7 @@
 package br.com.senac.cademeulivro.activities.edit;
 
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,9 +21,58 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.senac.cademeulivro.R;
+import br.com.senac.cademeulivro.dao.ObraDAO;
+import br.com.senac.cademeulivro.helpers.DatabaseHelper;
+import br.com.senac.cademeulivro.model.Obra;
 import br.com.senac.cademeulivro.util.SingleChoiceClass;
 
 public class ObraDetalhadaEditActivity extends AppCompatActivity {
+    private SQLiteDatabase mDatabase;
+    private EditText editTitulo, editAutor, editEditora, editDescricao, editISBN, editAnoPublicacao;
+    private CheckBox emprestado;
+    private ImageView imgCapa;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_obra_detalhada_edit);
+
+        //falta num de paginas e da edicao
+        imgCapa = (ImageView) findViewById(R.id.imageCapa);
+        editTitulo = (EditText) findViewById(R.id.editTitulo);
+        editAutor = (EditText) findViewById(R.id.editAutor);
+        editEditora = (EditText) findViewById(R.id.editEditora);
+        editDescricao = (EditText) findViewById(R.id.editDescricao);
+        editISBN = (EditText) findViewById(R.id.editISBN);
+        editAnoPublicacao = (EditText) findViewById(R.id.editAnoPublicacao);
+        emprestado = (CheckBox) findViewById(R.id.checkboxEmprestado);
+
+        mDatabase = DatabaseHelper.newInstance(this);
+    }
+
+    public void salvarLivro(View v) {
+        Obra o = new Obra();
+        ObraDAO obraDAO = new ObraDAO(mDatabase);
+        o.setAnoPublicacao(Integer.valueOf(editAnoPublicacao.getText().toString()));
+        o.setTitulo(editTitulo.getText().toString());
+        o.setEmprestado(emprestado.isChecked());
+        o.setAutor(editAutor.getText().toString());
+        o.setEditora(editEditora.getText().toString());
+        o.setDescricao(editDescricao.getText().toString());
+        o.setIsbn(editISBN.getText().toString());
+        //o.setCapa();
+        long result = obraDAO.insert(o);
+        if(result == -1) {
+            Toast.makeText(this, "Erro ao cadastrar obra! Todos os campos estão preenchidos?", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Obra cadastrada com sucesso.", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+    }
+
+
 /*
     private FloatingActionButton fbMain,fb1,fb2;
     private Animation FabOpen,FabClose,FabRClockWise,FabRantiClockWise;

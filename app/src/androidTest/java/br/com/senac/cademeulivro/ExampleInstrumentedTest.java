@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("br.com.senac.mergetcs", appContext.getPackageName());
+        assertEquals("br.com.senac.cademeulivro", appContext.getPackageName());
     }
 }

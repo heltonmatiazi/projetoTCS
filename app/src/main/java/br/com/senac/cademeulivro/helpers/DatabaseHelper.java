@@ -1,4 +1,4 @@
-package br.com.senac.cademeulivro.dao;
+package br.com.senac.cademeulivro.helpers;
 
 
 import android.content.Context;
