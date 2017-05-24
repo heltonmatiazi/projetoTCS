@@ -18,7 +18,7 @@ import br.com.senac.cademeulivro.util.itemListView.ItemListViewObras;
  * Created by joaos on 22/04/2017.
  */
 
-public class tab_RecomendadosActivity extends Fragment {
+public class tab_RecomendadosFragment extends Fragment {
 
     private ListView listView;
     private AdapterListViewObras adapterListView;

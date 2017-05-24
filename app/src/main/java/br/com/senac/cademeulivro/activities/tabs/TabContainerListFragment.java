@@ -1,9 +1,11 @@
 package br.com.senac.cademeulivro.activities.tabs;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +16,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import java.util.Map;
+import java.util.Set;
+
 import br.com.senac.cademeulivro.R;
 import br.com.senac.cademeulivro.activities.edit.ContainerEditActivity;
+import br.com.senac.cademeulivro.dao.ContainerTiposDAO;
+import br.com.senac.cademeulivro.helpers.DatabaseHelper;
 
 
 /**
  * Created by joaos on 22/04/2017.
  */
 
-public class tab_ContainersActivity extends Fragment implements View.OnClickListener {
+public class TabContainerListFragment extends Fragment implements View.OnClickListener {
 
     private ImageSwitcher ImgSw;
-    private final int[]  imagens={R.drawable.container_armario_icon,R.drawable.container_caixa_icon,R.drawable.container_estante_icon, R.drawable.container_prateleiras_icon};
-    private final String[] iconesNomes={"Armário","Caixa","Estante","Prateleiras"};
+    private Map<String,String> containersDefault;
     private int posicao=1;
     private TextView tvIcone;
     private ImageButton direita,esquerda;
     private Button editar,excluir;
-
+    private SQLiteDatabase mDatabase;
     //private FloatingActionButton fbMain;
     //private Animation FabOpen,FabClose;
     //private boolean isOpen=false;
@@ -41,6 +47,9 @@ public class tab_ContainersActivity extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.tab_activity_containers, container, false);
 
+        mDatabase = DatabaseHelper.newInstance(getActivity());
+        ContainerTiposDAO containerDAO = new ContainerTiposDAO(mDatabase);
+        Set<String> keys = containersDefault.keySet();
 
         ImgSw= (ImageSwitcher)rootView.findViewById(R.id.imageSwitcherCont);
         tvIcone=(TextView)rootView.findViewById(R.id.TextViewIconeCont);
@@ -68,8 +77,10 @@ public class tab_ContainersActivity extends Fragment implements View.OnClickList
                 return myView;
             }
         });
-        ImgSw.setImageResource(imagens[posicao]);
-        tvIcone.setText(iconesNomes[posicao]);
+        for(String valores : keys) {
+            //ImgSw.setImageResource(imagens[posicao]);
+            //tvIcone.setText(iconesNomes[posicao]);
+        }
 
 /*
         capturando o FAB e enviando sua animacao quando clicado
@@ -92,7 +103,7 @@ public class tab_ContainersActivity extends Fragment implements View.OnClickList
             posicao=0;
         }
 
-        ImgSw.setImageResource(imagens[posicao]);
+        //ImgSw.setImageResource(imagens[posicao]);
 
     }
 
@@ -104,7 +115,7 @@ public class tab_ContainersActivity extends Fragment implements View.OnClickList
             posicao=3;
         }
 
-        ImgSw.setImageResource(imagens[posicao]);
+        //ImgSw.setImageResource(imagens[posicao]);
 
     }
 

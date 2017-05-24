@@ -11,18 +11,27 @@ public class Container implements Serializable {
     private String localContainer;
     private Date ultimaModificacao;
     private List<Obra> obrasContidas;
-    private TipoContainer tipoContainer;
+    private ContainerTipos mContainerTipos;
+    private Integer totalObras;
 
     public Container() {
 
     }
 
-    public TipoContainer getTipoContainer() {
-        return tipoContainer;
+    public Integer getTotalObras() {
+        return obrasContidas.size();
     }
 
-    public void setTipoContainer(TipoContainer tipoContainer) {
-        this.tipoContainer = tipoContainer;
+    public void setTotalObras(Integer totalObras) {
+        this.totalObras = totalObras;
+    }
+
+    public ContainerTipos getContainerTipos() {
+        return mContainerTipos;
+    }
+
+    public void setContainerTipos(ContainerTipos containerTipos) {
+        this.mContainerTipos = containerTipos;
     }
 
     public Integer getIdBiblioteca() {

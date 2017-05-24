@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.senac.cademeulivro.activities.tabs.tab_ContainersActivity">
+    tools:context="br.com.senac.cademeulivro.activities.tabs.ContainerListFragment">
 
     <LinearLayout
         android:id="@+id/activity_container"

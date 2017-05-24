@@ -2,7 +2,6 @@ package br.com.senac.cademeulivro.dao;
 
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.senac.cademeulivro.model.Container;
-import br.com.senac.cademeulivro.model.TipoContainer;
+import br.com.senac.cademeulivro.model.ContainerTipos;
 
-
+//refactor com id biblioteca
 public class ContainerDAO {
     private SQLiteDatabase mDatabaseHelper;
 
@@ -51,8 +50,8 @@ public class ContainerDAO {
         return lista;
     }
 
-    private TipoContainer getTipo(Integer id) {
-        TipoContainer tp = new TipoContainer();
+    private ContainerTipos getTipo(Integer id) {
+        ContainerTipos tp = new ContainerTipos();
         Cursor cursor = mDatabaseHelper.query("ContainerTipos",null, "_id = ?", new String[] { id.toString() },null,null,null);
         tp.setTipoNome(cursor.getString(cursor.getColumnIndex("nomeTipo")));
         tp.setTipoIcone(cursor.getString(cursor.getColumnIndex("iconeTipo")));
@@ -62,7 +61,7 @@ public class ContainerDAO {
 
     private ContentValues getContentFrom(Container c) {
         ContentValues content = new ContentValues();
-        content.put("tipo", c.getTipoContainer().get_id());
+        content.put("tipo", c.getContainerTipos().get_id());
         content.put("nomeContainer", c.getNomeContainer());
         content.put("local", c.getLocalContainer());
         content.put("ultimaModificacao", c.getUltimaModificacao().toString());
@@ -78,7 +77,7 @@ public class ContainerDAO {
         container.setUltimaModificacao(Date.valueOf(cursor.getString(cursor.getColumnIndex("ultimaModificacao"))));
         container.setIdContainer(cursor.getInt(cursor.getColumnIndex("_id")));
         container.setIdBiblioteca(cursor.getInt(cursor.getColumnIndex("biblioteca_id")));
-        container.setTipoContainer(getTipo(cursor.getInt(cursor.getColumnIndex("tipo_id"))));
+        container.setContainerTipos(getTipo(cursor.getInt(cursor.getColumnIndex("tipo_id"))));
 
         return container;
 

@@ -41,4 +41,7 @@
     <string name="textVContainer">Container:</string>
     <string name="breveDescricao">Descrição:</string>
     <string name="edicao">Edição: </string>
+
+    <string name="container_vazio">Você ainda não cadastrou nenhum container!</string>
+    <string name="comecar">Vamos começar?</string>
 </resources>

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="br.com.senac.cademeulivro.activities.tabs.tab_ObrasActivity">
+    tools:context="br.com.senac.cademeulivro.activities.tabs.tab_ObrasFragment">
 
         <ListView
             android:id="@+id/listaObras"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="wrap_content"/>
 
 </android.support.design.widget.CoordinatorLayout>

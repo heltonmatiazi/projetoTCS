@@ -17,11 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 
 import br.com.senac.cademeulivro.activities.edit.ObraDetalhadaEditActivity;
-import br.com.senac.cademeulivro.activities.tabs.tab_ContainersActivity;
-import br.com.senac.cademeulivro.activities.tabs.tab_ObrasActivity;
-import br.com.senac.cademeulivro.activities.tabs.tab_RecomendadosActivity;
-import br.com.senac.cademeulivro.activities.tabs.tab_TagsActivity;
+import br.com.senac.cademeulivro.activities.tabs.ContainerListFragment;
+import br.com.senac.cademeulivro.activities.tabs.tab_ObrasFragment;
+import br.com.senac.cademeulivro.activities.tabs.tab_RecomendadosFragment;
+import br.com.senac.cademeulivro.activities.tabs.tab_TagsFragment;
 
+
+/**
+ * Created by joaos on 22/04/2017.
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
-
     }
+
+
 
 
     public void fabFuncao(View v){
@@ -119,16 +124,16 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
 
                 case 0:
-                    tab_ObrasActivity tabObras=new tab_ObrasActivity();
-                    return tabObras;
-                case 1:
-                    tab_TagsActivity tabTags=new tab_TagsActivity();
-                    return tabTags;
-                case 2:
-                    tab_ContainersActivity tabContainers=new tab_ContainersActivity();
+                    ContainerListFragment tabContainers=new ContainerListFragment();
                     return tabContainers;
+                case 1:
+                    tab_ObrasFragment tabObras=new tab_ObrasFragment();
+                    return tabObras;
+                case 2:
+                    tab_TagsFragment tabTags=new tab_TagsFragment();
+                    return tabTags;
                 case 3:
-                    tab_RecomendadosActivity tabRecomendados=new tab_RecomendadosActivity();
+                    tab_RecomendadosFragment tabRecomendados=new tab_RecomendadosFragment();
                     return tabRecomendados;
 
                 default:
@@ -148,11 +153,11 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Obras";
-                case 1:
-                    return "Tags";
-                case 2:
                     return "Containers";
+                case 1:
+                    return "Obras";
+                case 2:
+                    return "Tags";
                 case 3:
                     return "Recomendados";
             }

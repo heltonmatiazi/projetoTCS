@@ -27,8 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //cria e popula tabela ContainerTipos
         db.execSQL("CREATE TABLE ContainerTipos(_id INTEGER PRIMARY KEY, tipoIcone TEXT, tipoNome TEXT);");
-        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.capa', 'Capa Teste');");
-        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.capa', 'Capa Teste 2');");
+        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_armario_icon', 'Armário');");
+        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_caixa_icon', 'Caixa');");
+        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_estante_icon', 'Estante');");
+        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_prateleira_icon', 'Prateleira');");
 
         //cria tabela Obra
         db.execSQL("CREATE TABLE Obra(_id INTEGER PRIMARY KEY, paginas INTEGER, autor TEXT, titulo TEXT, editora TEXT, emprestado INTEGER, capa BLOB, isbn TEXT, descricao TEXT, edicao INTEGER, anoPublicacao INTEGER, container_id INTEGER, FOREIGN KEY(container_id) REFERENCES Container(_id));");

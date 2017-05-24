@@ -1,16 +1,18 @@
 package br.com.senac.cademeulivro.model;
 
-public class TipoContainer {
+import java.io.Serializable;
+
+public class ContainerTipos implements Serializable{
     private Integer _id;
     private String tipoNome;
     private String tipoIcone;
 
-    public TipoContainer(String tipoNome, String tipoIcone) {
+    public ContainerTipos(String tipoNome, String tipoIcone) {
         this.tipoNome = tipoNome;
         this.tipoIcone = tipoIcone;
     }
 
-    public TipoContainer() {
+    public ContainerTipos() {
     }
 
     public Integer get_id() {

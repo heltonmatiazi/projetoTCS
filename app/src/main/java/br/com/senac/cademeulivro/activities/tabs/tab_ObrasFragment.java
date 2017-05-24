@@ -16,7 +16,7 @@ import br.com.senac.cademeulivro.dao.ObraDAO;
 import br.com.senac.cademeulivro.model.Obra;
 import br.com.senac.cademeulivro.util.adapter.AdapterListViewObra;
 
-public class tab_ObrasActivity extends Fragment {
+public class tab_ObrasFragment extends Fragment {
     private ListView listView;
     private ObraDAO obraDao;
     private SQLiteDatabase mDatabase;

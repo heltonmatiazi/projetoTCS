@@ -19,7 +19,7 @@ import br.com.senac.cademeulivro.util.itemListView.ItemListViewTags;
  * Created by joaos on 22/04/2017.
  */
 
-public class tab_TagsActivity extends Fragment {
+public class tab_TagsFragment extends Fragment {
 
     private ListView listView;
     private AdapterListViewTags adapterListViewTags;
