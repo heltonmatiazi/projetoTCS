@@ -3,7 +3,9 @@ package senac.com.br.cademeulivro.dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import senac.com.br.cademeulivro.model.Usuario;
+
 
 public class UsuarioDAO {
     private SQLiteDatabase mDatabaseHelper;
@@ -40,7 +42,6 @@ public class UsuarioDAO {
         usuario.setIdUsuario(cursor.getInt(cursor.getColumnIndex("_id")));
 
         return usuario;
-
     }
 
 }

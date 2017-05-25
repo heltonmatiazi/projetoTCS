@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import senac.com.br.cademeulivro.R;
+import senac.com.br.cademeulivro.model.Tag;
 import senac.com.br.cademeulivro.util.itemListView.ItemListViewTags;
 
 /**
@@ -21,10 +23,10 @@ import senac.com.br.cademeulivro.util.itemListView.ItemListViewTags;
 public class AdapterListViewTags extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private ArrayList<ItemListViewTags> itens;
+    private List<Tag> itens;
 
 
-    public AdapterListViewTags(Context context, ArrayList<ItemListViewTags> itens) {
+    public AdapterListViewTags(Context context, List<Tag> itens) {
 
         this.itens = itens;
         inflater=LayoutInflater.from(context);
@@ -51,7 +53,7 @@ public class AdapterListViewTags extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
 
         //Resgatar o item do ListView pelo position
-        ItemListViewTags item=itens.get(position);
+        Tag item= (Tag)itens.get(position);
 
         //Resgatar o layout a ser preenchido
         view=inflater.inflate(R.layout.activity_item_lista_tags,null);
@@ -60,10 +62,9 @@ public class AdapterListViewTags extends BaseAdapter {
         TextView nome=(TextView) view.findViewById(R.id.tvNomeTag);
         LinearLayout layoutTags= (LinearLayout) view.findViewById(R.id.layoutTags);
 
-        nome.setText(item.getNome());
-        layoutTags.setBackgroundColor(item.getCor());
+        nome.setText(item.getNomeTag());
+        layoutTags.setBackgroundColor(Integer.parseInt(item.getCorHex()));
 
         return view;
     }
-
 }

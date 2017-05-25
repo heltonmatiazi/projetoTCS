@@ -1,11 +1,11 @@
 package senac.com.br.cademeulivro.dao;
 
+
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import java.sql.Date;
-
 import senac.com.br.cademeulivro.model.Obra;
+
 
 public class ObraCursorWrapper extends CursorWrapper {
     private Obra o;

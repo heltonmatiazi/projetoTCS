@@ -16,17 +16,20 @@
         <activity
             android:name=".activities.old.old_LoginActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            >
         </activity>
         <activity android:name=".activities.old.old_MainActivity">
+        </activity>
+        <activity android:name=".activities.old.old_ObraDetalhadaActivity"/>
+        <activity android:name=".activities.old.old_ObraCadastroActivity">
+        </activity>
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".activities.old.old_ObraDetalhadaActivity"/>
-        <activity android:name=".activities.old.old_ObraCadastroActivity">
+
         </activity>
     </application>
 

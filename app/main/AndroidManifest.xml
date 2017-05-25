@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.joaos.virtualhelper">
+    package="senac.com.br.cademeulivro">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/icone_logo_nova"
+        android:icon="@mipmap/icone_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".activity.LoginActivity">
+        <activity android:name=".activities.LoginActivity"
+            >
 
         </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ObraDetalhadaActivity" />
-        <activity android:name=".activity.ObraDetalhadaEditActivity"></activity>
-        <activity android:name=".activity.ContainerEditActivity"></activity>
-        <activity android:name=".activity.RecomendarObra"></activity>
+        <activity android:name=".activities.ObraDetalhadaActivity" />
+        <activity android:name=".activities.edit.ObraDetalhadaEditActivity"></activity>
+        <activity android:name=".activities.edit.ContainerEditActivity"></activity>
+        <activity android:name=".activities.RecomendarObra"></activity>
     </application>
 
 </manifest>

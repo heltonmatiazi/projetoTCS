@@ -15,19 +15,33 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.zxing.client.android.CaptureActivity;
+
+import java.util.List;
 
 import senac.com.br.cademeulivro.R;
+import senac.com.br.cademeulivro.activities.edit.ContainerEditActivity;
 import senac.com.br.cademeulivro.activities.edit.ObraDetalhadaEditActivity;
+import senac.com.br.cademeulivro.activities.edit.TagEditActivity;
 import senac.com.br.cademeulivro.activities.tabs.tab_ContainersActivity;
 import senac.com.br.cademeulivro.activities.tabs.tab_ObrasActivity;
 import senac.com.br.cademeulivro.activities.tabs.tab_RecomendadosActivity;
 import senac.com.br.cademeulivro.activities.tabs.tab_TagsActivity;
+import senac.com.br.cademeulivro.model.Obra;
+import senac.com.br.cademeulivro.util.Constantes;
+import senac.com.br.cademeulivro.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
 
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private FloatingActionButton fab;
+    private Scanner scanner;
+    private List<Obra> lista;
+    private int tabPosicao=0;
 
     private ViewPager mViewPager;
 
@@ -51,62 +65,90 @@ public class MainActivity extends AppCompatActivity {
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
+        tabLayout.setOnTabSelectedListener(
+                new TabLayout.ViewPagerOnTabSelectedListener(mViewPager) {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        super.onTabSelected(tab);
+                        mViewPager.setCurrentItem(tab.getPosition());
+                        tabPosicao=tab.getPosition();
+                    }
+                });
 
     }
 
 
     public void fabFuncao(View v){
 
-        CharSequence opcoes[] = new CharSequence[] {"Manualmente", "Escanear ISBN"};
+        CharSequence opcoes[];
+        Intent intent;
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Cadastrar");
-        builder.setItems(opcoes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        switch (tabPosicao){
 
-                if(which==0){
-                    Intent intent=new Intent(MainActivity.this,ObraDetalhadaEditActivity.class);
-                    startActivity(intent);
+            case 0:
+                opcoes = new CharSequence[] {"Manualmente", "Escanear ISBN"};
 
-                }else{
-                    //Escanear isbn
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Cadastrar");
+                builder.setItems(opcoes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-        builder.show();
+                        if(which==0){
+                            Intent intent=new Intent(MainActivity.this, ObraDetalhadaEditActivity.class);
+                            startActivity(intent);
+
+                        }else{
+                            //pega isbn via camera
+                            Intent intent = new Intent(getApplicationContext(),CaptureActivity.class);
+                            intent.setAction("com.google.zxing.client.android.SCAN");
+                            intent.putExtra("SAVE_HISTORY", false);
+                            startActivityForResult(intent, Constantes.SCANNER_REQUEST);
+
+                        }
+
+                    }
+                });
+                builder.show();
+
+
+                break;
+            case 1:
+
+                intent=new Intent(MainActivity.this,TagEditActivity.class);
+                startActivity(intent);
+
+                break;
+            case 2:
+
+                intent=new Intent(MainActivity.this,ContainerEditActivity.class);
+                startActivity(intent);
+
+                break;
+            case 3:
+
+                //recomendados
+                break;
+        }
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -140,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 4 total pages.
             return 4;
         }
 
@@ -160,5 +201,30 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == Constantes.SCANNER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+
+                //capturando o resultado do scanner
+                String contents = data.getStringExtra("SCAN_RESULT");
+
+
+                Intent intent=new Intent(this,ResultadoScannerActivity.class);
+                intent.putExtra("isbn",contents);
+                startActivity(intent);
+                /*
+                Intent intent=new Intent(this,ResultadoScannerActivity.class);
+                intent.putExtra("lista",(ArrayList<Obra>)lista);
+                startActivity(intent);
+*/
+            } else {
+                Toast.makeText(this, "Falha ao ler o código!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
 }

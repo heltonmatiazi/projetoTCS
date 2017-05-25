@@ -1,19 +1,28 @@
 package senac.com.br.cademeulivro.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Container {
+public class Container implements Serializable {
     private Integer idContainer;
     private Integer idBiblioteca;
     private String nomeContainer;
-    private int iconeContainer;
     private String localContainer;
     private Date ultimaModificacao;
     private List<Obra> obrasContidas;
+    private TipoContainer tipoContainer;
 
     public Container() {
 
+    }
+
+    public TipoContainer getTipoContainer() {
+        return tipoContainer;
+    }
+
+    public void setTipoContainer(TipoContainer tipoContainer) {
+        this.tipoContainer = tipoContainer;
     }
 
     public Integer getIdBiblioteca() {
@@ -46,14 +55,6 @@ public class Container {
 
     public void setNomeContainer(String nomeContainer) {
         this.nomeContainer = nomeContainer;
-    }
-
-    public int getIconeContainer() {
-        return iconeContainer;
-    }
-
-    public void setIconeContainer(int iconeContainer) {
-        this.iconeContainer = iconeContainer;
     }
 
     public String getLocalContainer() {

@@ -1,21 +1,20 @@
 package senac.com.br.cademeulivro.model;
 
-import java.sql.Blob;
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
-public class Obra {
+public class Obra implements Serializable{
     private Integer idObra;
-    private int numerodePaginas;
-    private String autor;
+    private int numeroPaginas;//
+    private String autor;//
     private String editora;
     private List<Tag> tags;
     private byte[] capa;
     private boolean emprestado;
-    private String titulo;
-    private String descricao;
-    private int anoPublicacao;
-    private String isbn;
+    private String titulo;//
+    private String descricao;//
+    private int anoPublicacao;//
+    private String isbn;//
     private int numeroEdicao;
 
     public boolean isEmprestado() {
@@ -66,12 +65,12 @@ public class Obra {
         this.idObra = idObra;
     }
 
-    public int getNumerodePaginas() {
-        return numerodePaginas;
+    public int getNumeroPaginas() {
+        return numeroPaginas;
     }
 
-    public void setNumerodePaginas(int numerodePaginas) {
-        this.numerodePaginas = numerodePaginas;
+    public void setNumeroPaginas(int numeroPaginas) {
+        this.numeroPaginas = numeroPaginas;
     }
 
     public String getAutor() {
@@ -113,4 +112,5 @@ public class Obra {
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
+
 }

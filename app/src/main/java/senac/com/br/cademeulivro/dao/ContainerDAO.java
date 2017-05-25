@@ -6,12 +6,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import senac.com.br.cademeulivro.model.Container;
+import senac.com.br.cademeulivro.model.TipoContainer;
 
 
 public class ContainerDAO {
     private SQLiteDatabase mDatabaseHelper;
+
+    public ContainerDAO(SQLiteDatabase databaseHelper) {
+        mDatabaseHelper = databaseHelper;
+    }
 
     public long insert(Container c) {
         return mDatabaseHelper.insert("Container", null, getContentFrom(c));
@@ -30,10 +37,31 @@ public class ContainerDAO {
         return getContainer(cursor);
     }
 
+    public List<Container> getAll() {
+        List<Container> lista = new ArrayList<>();
+        Cursor cursor = mDatabaseHelper.query("Container",null, null, null,null,null,null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Container c = getContainer(cursor);
+            lista.add(c);
+            cursor.moveToNext();
+        }
+        cursor.close();;
+        return lista;
+    }
+
+    private TipoContainer getTipo(Integer id) {
+        TipoContainer tp = new TipoContainer();
+        Cursor cursor = mDatabaseHelper.query("ContainerTipos",null, "_id = ?", new String[] { id.toString() },null,null,null);
+        tp.setTipoNome(cursor.getString(cursor.getColumnIndex("nomeTipo")));
+        tp.setTipoIcone(cursor.getString(cursor.getColumnIndex("iconeTipo")));
+        tp.set_id(id);
+        return tp;
+    }
 
     private ContentValues getContentFrom(Container c) {
         ContentValues content = new ContentValues();
-        //content.put("icone", c.getIconeContainer()); //*****
+        content.put("tipo", c.getTipoContainer().get_id());
         content.put("nomeContainer", c.getNomeContainer());
         content.put("local", c.getLocalContainer());
         content.put("ultimaModificacao", c.getUltimaModificacao().toString());
@@ -49,7 +77,7 @@ public class ContainerDAO {
         container.setUltimaModificacao(Date.valueOf(cursor.getString(cursor.getColumnIndex("ultimaModificacao"))));
         container.setIdContainer(cursor.getInt(cursor.getColumnIndex("_id")));
         container.setIdBiblioteca(cursor.getInt(cursor.getColumnIndex("biblioteca_id")));
-        //container.setIconeContainer(cursor.getString(cursor.getColumnIndex("icone")));
+        container.setTipoContainer(getTipo(cursor.getInt(cursor.getColumnIndex("tipo_id"))));
 
         return container;
 
