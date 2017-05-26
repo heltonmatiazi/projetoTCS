@@ -1,4 +1,4 @@
-package br.com.senac.cademeulivro.activities.tabs;
+package br.com.senac.cademeulivro.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,8 +17,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.senac.cademeulivro.R;
-import br.com.senac.cademeulivro.activities.edit.CadastroPagerActivity;
-import br.com.senac.cademeulivro.activities.edit.ObraDetalhadaEditActivity;
+import br.com.senac.cademeulivro.activities.CadastroPagerActivity;
 import br.com.senac.cademeulivro.dao.ContainerDAO;
 import br.com.senac.cademeulivro.helpers.DatabaseHelper;
 import br.com.senac.cademeulivro.model.Container;
@@ -48,9 +47,9 @@ public class ContainerListFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mDatabase.close();
+    public void onResume() {
+        super.onResume();
+        refresh();
     }
 
     private class ContainerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -69,7 +68,8 @@ public class ContainerListFragment extends Fragment {
 
         public void bind(Container c) {
             mContainer = c;
-            imgCapa.setImageResource(Integer.parseInt(c.getContainerTipos().getTipoIcone()));
+            //imgCapa.setImageResource(Integer.parseInt(c.getContainerTipos().getTipoIcone()));
+            imgCapa.setImageResource(c.getContainerTipos().getTipoIcone());
             txtNome.setText(c.getNomeContainer());
             txtDtModificacao.setText(c.getUltimaModificacao().toString()); //format
             txtTotalObras.setText(c.getTotalObras());
@@ -113,8 +113,8 @@ public class ContainerListFragment extends Fragment {
     }
 
     private void refresh() {
-        List<Container> itens = containerDAO.getAll(); //get da biblioteca especifica!!!
-        checkIfEmpty(itens);
+        List<Container> itens = containerDAO.getAll(); //get da biblioteca especifica
+        primeiroAcesso(itens); //achar um lugar melhor pra isso aqui please
 
         if (mAdapter == null) {
             mAdapter = new ContainerAdapter(itens);
@@ -123,13 +123,17 @@ public class ContainerListFragment extends Fragment {
             mAdapter.setContainerList(itens);
             mAdapter.notifyDataSetChanged();
         }
+
     }
 
-    private void checkIfEmpty(List<Container> itens) {
+    private void primeiroAcesso(List<Container> itens) {
         if(itens.isEmpty()) {
             AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-            alert.setMessage(R.string.container_vazio);
-            alert.setPositiveButton(R.string.comecar, new DialogInterface.OnClickListener() {
+            alert.setIcon(R.drawable.container_estante_icon);
+            alert.setTitle(R.string.bem_vindo);
+            alert.setMessage(R.string.primeiro_acesso);
+            //alert.setView(R.layout.dialog_bem_vindo);
+            alert.setPositiveButton(R.string.proximo, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     startActivity(new Intent(getActivity(), CadastroPagerActivity.class));

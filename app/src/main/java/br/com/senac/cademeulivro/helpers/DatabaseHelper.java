@@ -1,9 +1,15 @@
 package br.com.senac.cademeulivro.helpers;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import br.com.senac.cademeulivro.R;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "CadeMeuLivro.db";
@@ -26,11 +32,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE Container(_id INTEGER PRIMARY KEY, nomeContainer TEXT, tipo_id INTEGER, local TEXT, ultimaModificacao TEXT, biblioteca_id INTEGER, FOREIGN KEY(biblioteca_id) REFERENCES Biblioteca(_id), FOREIGN KEY(tipo_id) REFERENCES ContainerTipos(_id));");
 
         //cria e popula tabela ContainerTipos
-        db.execSQL("CREATE TABLE ContainerTipos(_id INTEGER PRIMARY KEY, tipoIcone TEXT, tipoNome TEXT);");
-        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_armario_icon', 'Armário');");
-        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_caixa_icon', 'Caixa');");
-        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_estante_icon', 'Estante');");
-        db.execSQL("INSERT INTO ContainerTipos(tipoIcone, tipoNome) VALUES('R.drawable.container_prateleira_icon', 'Prateleira');");
+        db.execSQL("CREATE TABLE ContainerTipos(_id INTEGER PRIMARY KEY, tipoIcone INTEGER, tipoNome TEXT);");
+
+        Map<Integer,String> valoresDefault = new HashMap<>();
+        valoresDefault.put(R.drawable.container_armario_icon,"Armário");
+        valoresDefault.put(R.drawable.container_caixa_icon,"Caixa");
+        valoresDefault.put(R.drawable.container_estante_icon,"Estante");
+        valoresDefault.put(R.drawable.container_prateleiras_icon,"Prateleira");
+
+        ContentValues contentValues = new ContentValues();
+        for (Map.Entry<Integer, String> entry : valoresDefault.entrySet())
+        {
+            contentValues.put("tipoIcone",entry.getKey());
+            contentValues.put("tipoNome", entry.getValue());
+            db.insert("ContainerTipos",null, contentValues);
+        }
 
         //cria tabela Obra
         db.execSQL("CREATE TABLE Obra(_id INTEGER PRIMARY KEY, paginas INTEGER, autor TEXT, titulo TEXT, editora TEXT, emprestado INTEGER, capa BLOB, isbn TEXT, descricao TEXT, edicao INTEGER, anoPublicacao INTEGER, container_id INTEGER, FOREIGN KEY(container_id) REFERENCES Container(_id));");

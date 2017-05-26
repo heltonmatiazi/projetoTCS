@@ -54,7 +54,8 @@ public class ContainerDAO {
         ContainerTipos tp = new ContainerTipos();
         Cursor cursor = mDatabaseHelper.query("ContainerTipos",null, "_id = ?", new String[] { id.toString() },null,null,null);
         tp.setTipoNome(cursor.getString(cursor.getColumnIndex("nomeTipo")));
-        tp.setTipoIcone(cursor.getString(cursor.getColumnIndex("iconeTipo")));
+        tp.setTipoIcone(cursor.getInt(cursor.getColumnIndex("iconeTipo")));
+        //tp.setTipoIcone(cursor.getString(cursor.getColumnIndex("iconeTipo")));
         tp.set_id(id);
         return tp;
     }

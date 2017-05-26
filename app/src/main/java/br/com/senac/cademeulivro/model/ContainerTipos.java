@@ -5,9 +5,17 @@ import java.io.Serializable;
 public class ContainerTipos implements Serializable{
     private Integer _id;
     private String tipoNome;
-    private String tipoIcone;
+//    private String tipoIcone;
+    private Integer tipoIcone;
 
-    public ContainerTipos(String tipoNome, String tipoIcone) {
+
+    public ContainerTipos(Integer _id, String tipoNome, Integer tipoIcone) {
+        this._id = _id;
+        this.tipoNome = tipoNome;
+        this.tipoIcone = tipoIcone;
+    }
+
+    public ContainerTipos(String tipoNome, Integer tipoIcone) {
         this.tipoNome = tipoNome;
         this.tipoIcone = tipoIcone;
     }
@@ -31,11 +39,11 @@ public class ContainerTipos implements Serializable{
         this.tipoNome = tipoNome;
     }
 
-    public String getTipoIcone() {
+    public Integer getTipoIcone() {
         return tipoIcone;
     }
 
-    public void setTipoIcone(String tipoIcone) {
+    public void setTipoIcone(Integer tipoIcone) {
         this.tipoIcone = tipoIcone;
     }
 }

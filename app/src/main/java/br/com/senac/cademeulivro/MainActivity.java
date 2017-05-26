@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import br.com.senac.cademeulivro.activities.edit.ObraDetalhadaEditActivity;
-import br.com.senac.cademeulivro.activities.tabs.ContainerListFragment;
+import br.com.senac.cademeulivro.activities.ContainerListFragment;
 import br.com.senac.cademeulivro.activities.tabs.tab_ObrasFragment;
 import br.com.senac.cademeulivro.activities.tabs.tab_RecomendadosFragment;
 import br.com.senac.cademeulivro.activities.tabs.tab_TagsFragment;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
 

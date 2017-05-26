@@ -24,9 +24,11 @@ public class ContainerTiposDAO {
         Cursor cursor = mDatabase.query("ContainerTipos", null, null, null, null,null,null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            String tipoIcone = cursor.getString(cursor.getColumnIndex("tipoIcone"));
+            Integer tipoIcone = cursor.getInt(cursor.getColumnIndex("tipoIcone"));
             String tipoNome =cursor.getString(cursor.getColumnIndex("tipoNome"));
-            containers.add(new ContainerTipos(tipoNome,tipoIcone));
+            Integer id = cursor.getInt(cursor.getColumnIndex("_id"));
+            containers.add(new ContainerTipos(id,tipoNome,tipoIcone));
+            cursor.moveToNext();
         }
         cursor.close();
 
