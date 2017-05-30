@@ -25,6 +25,8 @@ public class ResultadoScannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_scanner);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         listView= (ListView) findViewById(R.id.listaScanner);
 
@@ -67,6 +69,12 @@ public class ResultadoScannerActivity extends AppCompatActivity {
         };
 
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
 }

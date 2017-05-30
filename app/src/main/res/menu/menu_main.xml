@@ -5,16 +5,22 @@
     tools:context="senac.com.br.cademeulivro.activities.MainActivity">
 
     <item
-    android:id="@+id/action_search"
-    android:icon="@mipmap/ic_menu_search"
-    android:title="Search"
-    app:actionViewClass="android.support.v7.widget.SearchView"
-    app:showAsAction="ifRoom" />
-
+        android:id="@+id/action_search"
+        android:icon="@mipmap/ic_menu_search"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Settings"
+        android:title="Configurações"
+        app:showAsAction="never" />
+
+    <item
+
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Sair"
         app:showAsAction="never" />
 
 </menu>

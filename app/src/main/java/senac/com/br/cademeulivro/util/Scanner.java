@@ -96,9 +96,9 @@ public class Scanner {
 
                         obra.setTitulo((!volumeObject.isNull("title")) ? volumeObject.getString("title") : null);
                         obra.setEditora((!volumeObject.isNull("publisher") ? volumeObject.getString("publisher") : null));
-                        obra.setAnoPublicacao((!volumeObject.isNull("publishedDate") ? Integer.parseInt(volumeObject.getString("publishedDate")) : 0));
+                        obra.setAnoPublicacao((!volumeObject.isNull("publishedDate") ? volumeObject.getInt("publishedDate") : 0));
                         obra.setDescricao(!volumeObject.isNull("description") ? volumeObject.getString("description") : null);
-                        obra.setNumeroPaginas((!volumeObject.isNull("pageCount")) ? Integer.parseInt(volumeObject.getString("pageCount")) : 0);
+                        obra.setNumeroPaginas((!volumeObject.isNull("pageCount")) ? volumeObject.getInt("pageCount") : 0);
                         obra.setIsbn(ISBN);
 
                         //pegando capa do livro
