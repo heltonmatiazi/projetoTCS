@@ -2,6 +2,7 @@ package senac.com.br.cademeulivro.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -74,6 +75,20 @@ public class MainActivity extends AppCompatActivity {
                         tabPosicao=tab.getPosition();
                     }
                 });
+
+
+
+        final String PREFS_NAME = "MyPrefsFile";
+        //primeira vez que o app é aberto
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("my_first_time", true)) {
+
+            //inicar activity de instruções
+
+            // record the fact that the app has been started at least once
+            settings.edit().putBoolean("my_first_time", false).commit();
+        }
 
     }
 
