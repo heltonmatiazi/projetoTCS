@@ -10,7 +10,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import senac.com.br.cademeulivro.R;
-import senac.com.br.cademeulivro.util.adapter.AdapterListViewObras;
+
+import senac.com.br.cademeulivro.util.adapter.AdapterListViewObra;
 import senac.com.br.cademeulivro.util.itemListView.ItemListViewObras;
 
 /**
@@ -20,7 +21,7 @@ import senac.com.br.cademeulivro.util.itemListView.ItemListViewObras;
 public class tab_RecomendadosActivity extends Fragment {
 
     private ListView listView;
-    private AdapterListViewObras adapterListView;
+    private AdapterListViewObra adapterListView;
     private ArrayList<ItemListViewObras> itens;
 
     @Override
@@ -49,7 +50,7 @@ public class tab_RecomendadosActivity extends Fragment {
         itens.add(item2);
         itens.add(item2);
 
-        adapterListView=new AdapterListViewObras(getActivity(),itens);
+        //adapterListView=new AdapterListViewObra(getActivity(),itens);
 
         listView.setAdapter(adapterListView);
 
