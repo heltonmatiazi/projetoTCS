@@ -7,8 +7,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,6 +19,7 @@ import java.util.List;
 
 import br.com.senac.cademeulivro.activities.ContainerFragment;
 import br.com.senac.cademeulivro.R;
+import br.com.senac.cademeulivro.dao.ContainerDAO;
 import br.com.senac.cademeulivro.dao.ContainerTiposDAO;
 import br.com.senac.cademeulivro.helpers.DatabaseHelper;
 import br.com.senac.cademeulivro.model.Container;
@@ -26,6 +29,9 @@ public class CadastroPagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private List<ContainerTipos> mContainerTiposList;
     private SQLiteDatabase mDatabase;
+    private EditText localContainer, nomeContainer;
+    private TextView ultimaModificacao;
+    private ContainerTipos tipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +43,11 @@ public class CadastroPagerActivity extends AppCompatActivity {
         ContainerTiposDAO dao = new ContainerTiposDAO(mDatabase);
         mContainerTiposList = dao.getContainersDefault();
 
-        for(ContainerTipos ct : mContainerTiposList) {
-            System.out.println(ct.getTipoNome());
-        }
-
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
             @Override
             public Fragment getItem(int position) {
-                ContainerTipos tipo = mContainerTiposList.get(position);
+                tipo = mContainerTiposList.get(position);
                 return ContainerFragment.newInstance(tipo);
             }
 
@@ -55,15 +57,32 @@ public class CadastroPagerActivity extends AppCompatActivity {
             }
         });
 
-        EditText localContainer = (EditText) findViewById(R.id.editLocalContainer);
-        EditText nomeContainer = (EditText) findViewById(R.id.editNomeContainer);
-        TextView totalObras = (TextView) findViewById(R.id.txtTotalObras);
-        TextView ultimaModificacao = (TextView) findViewById(R.id.ultimaModificacao);
-        TextView ultimaObraAdd = (TextView) findViewById(R.id.ultimaObraAdd);
-        totalObras.setText("0 obras");
+        localContainer = (EditText) findViewById(R.id.editLocalContainer);
+        nomeContainer = (EditText) findViewById(R.id.editNomeContainer);
+        ultimaModificacao = (TextView) findViewById(R.id.ultimaModificacao);
 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        ultimaModificacao.setText(df.format(new Date()));
+        ultimaModificacao.setText(getString(R.string.ultima_modif_container, df.format(new Date())));
+    }
+
+    public void containerCancelar(View v) {
+        finish();
+    }
+
+    public void containerSalvar(View v) {
+        Container novoContainer = new Container();
+        novoContainer.setNomeContainer(nomeContainer.getText().toString());
+        novoContainer.setLocalContainer(localContainer.getText().toString());
+        novoContainer.setUltimaModificacao(new Date());
+        novoContainer.setIdBiblioteca(1); //user teste
+        novoContainer.setContainerTipos(tipo);
+        ContainerDAO containerDAO = new ContainerDAO(mDatabase);
+        long result = containerDAO.insert(novoContainer);
+        if(result > 0) {
+            finish();
+        } else {
+            Toast.makeText(this,"Erro", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

@@ -27,7 +27,6 @@ public class ContainerListFragment extends Fragment {
     private ContainerDAO containerDAO;
     private ContainerAdapter mAdapter;
     private SQLiteDatabase mDatabase;
-    private List<Container> itens;
     //private FloatingActionButton fbMain;
     //private Animation FabOpen,FabClose;
     //private boolean isOpen=false;
@@ -40,7 +39,7 @@ public class ContainerListFragment extends Fragment {
         containerDAO = new ContainerDAO(mDatabase);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.container_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        primeiroAcesso();
         refresh();
 
         return v;
@@ -68,11 +67,11 @@ public class ContainerListFragment extends Fragment {
 
         public void bind(Container c) {
             mContainer = c;
-            //imgCapa.setImageResource(Integer.parseInt(c.getContainerTipos().getTipoIcone()));
-            imgCapa.setImageResource(c.getContainerTipos().getTipoIcone());
-            txtNome.setText(c.getNomeContainer());
-            txtDtModificacao.setText(c.getUltimaModificacao().toString()); //format
-            txtTotalObras.setText(c.getTotalObras());
+            //testar com getResources().getIdentifier("nome","drawable", getPackageName())
+            imgCapa.setImageResource(mContainer.getContainerTipos().getTipoIcone());
+            txtNome.setText(mContainer.getNomeContainer());
+            txtDtModificacao.setText(mContainer.getUltimaModificacao().toString()); //format
+            txtTotalObras.setText(mContainer.getTotalObras());
 
         }
 
@@ -114,8 +113,6 @@ public class ContainerListFragment extends Fragment {
 
     private void refresh() {
         List<Container> itens = containerDAO.getAll(); //get da biblioteca especifica
-        primeiroAcesso(itens); //achar um lugar melhor pra isso aqui please
-
         if (mAdapter == null) {
             mAdapter = new ContainerAdapter(itens);
             mRecyclerView.setAdapter(mAdapter);
@@ -126,7 +123,8 @@ public class ContainerListFragment extends Fragment {
 
     }
 
-    private void primeiroAcesso(List<Container> itens) {
+    private void primeiroAcesso() {
+        List<Container> itens = containerDAO.getAll();
         if(itens.isEmpty()) {
             AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
             alert.setIcon(R.drawable.container_estante_icon);

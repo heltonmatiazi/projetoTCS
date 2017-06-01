@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class ContainerTipos implements Serializable{
     private Integer _id;
     private String tipoNome;
-//    private String tipoIcone;
     private Integer tipoIcone;
 
 

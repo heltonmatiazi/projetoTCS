@@ -46,7 +46,7 @@
     <string name="proximo">Próximo</string>
     <string name="hint_nome_container">Ex: Caixa Preta</string>
     <string name="hint_local_container">Ex: Quarto</string>
-    <string name="ultima_modif_container">Modificado em: </string>
+    <string name="ultima_modif_container">Modificado em: %s</string>
     <string name="ultima_obra_add">Última obra adicionada: </string>
     <string name="bem_vindo">Bem Vindo</string>
 </resources>
