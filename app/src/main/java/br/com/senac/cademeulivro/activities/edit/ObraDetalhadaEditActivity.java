@@ -2,6 +2,8 @@ package br.com.senac.cademeulivro.activities.edit;
 
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -61,7 +63,8 @@ public class ObraDetalhadaEditActivity extends AppCompatActivity {
         o.setEditora(editEditora.getText().toString());
         o.setDescricao(editDescricao.getText().toString());
         o.setIsbn(editISBN.getText().toString());
-        //o.setCapa();
+        Bitmap capaBitmap = ((BitmapDrawable)imgCapa.getDrawable()).getBitmap();
+        o.setCapa(capaBitmap);
         long result = obraDAO.insert(o);
         if(result == -1) {
             Toast.makeText(this, "Erro ao cadastrar obra! Todos os campos estão preenchidos?", Toast.LENGTH_LONG).show();

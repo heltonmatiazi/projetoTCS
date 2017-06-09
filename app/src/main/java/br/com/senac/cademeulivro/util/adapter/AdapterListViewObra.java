@@ -62,7 +62,7 @@ public class AdapterListViewObra extends BaseAdapter {
 
         titulo.setText(item.getTitulo());
         autor.setText(item.getAutor());
-        capa.setImageResource(R.drawable.capa); //hardcoded por enquanto
+        capa.setImageBitmap(item.getCapa());
 
         return view;
     }
