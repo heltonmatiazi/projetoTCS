@@ -43,10 +43,14 @@
     <string name="edicao">Edição: </string>
 
     <string name="primeiro_acesso">Vamos começar a montar a sua biblioteca. Onde está seu livro?</string>
-    <string name="proximo">Próximo</string>
+    <string name="seguinte">Seguinte</string>
     <string name="hint_nome_container">Ex: Caixa Preta</string>
     <string name="hint_local_container">Ex: Quarto</string>
     <string name="ultima_modif_container">Modificado em: %s</string>
     <string name="ultima_obra_add">Última obra adicionada: </string>
     <string name="bem_vindo">Bem Vindo</string>
+    <string-array name="dialog_lista">
+        <item>Editar</item>
+        <item>Excluir</item>
+    </string-array>
 </resources>

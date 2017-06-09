@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import br.com.senac.cademeulivro.R;
@@ -51,33 +53,57 @@ public class ContainerListFragment extends Fragment {
         refresh();
     }
 
-    private class ContainerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class ContainerHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         private Container mContainer;
-        private ImageView imgCapa;
-        private TextView txtNome, txtTotalObras, txtDtModificacao;
+        private ImageView imgContainer;
+        private TextView txtNome, txtTotalObras, txtDtModificacao, txtLocal;
 
         public ContainerHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_container, parent, false));
             itemView.setOnClickListener(this);
-            imgCapa = (ImageView) itemView.findViewById(R.id.imgContainer);
+            itemView.setOnLongClickListener(this);
+            imgContainer = (ImageView) itemView.findViewById(R.id.imgContainer);
             txtNome = (TextView) itemView.findViewById(R.id.txtNome);
             txtTotalObras = (TextView) itemView.findViewById(R.id.txtTotalObras);
             txtDtModificacao = (TextView) itemView.findViewById(R.id.txtDtModificacao);
+            txtLocal = (TextView) itemView.findViewById(R.id.txtLocal);
         }
 
         public void bind(Container c) {
             mContainer = c;
-            //testar com getResources().getIdentifier("nome","drawable", getPackageName())
-            imgCapa.setImageResource(mContainer.getContainerTipos().getTipoIcone());
+            imgContainer.setImageResource(mContainer.getContainerTipos().getTipoIcone());
             txtNome.setText(mContainer.getNomeContainer());
-            txtDtModificacao.setText(mContainer.getUltimaModificacao().toString()); //format
-            txtTotalObras.setText(mContainer.getTotalObras());
-
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            txtDtModificacao.setText(df.format(mContainer.getUltimaModificacao()));
+            //txtTotalObras.setText(mContainer.getTotalObras()); npe
+            txtLocal.setText(mContainer.getLocalContainer());
         }
 
         @Override
         public void onClick(View v) {
-            //launch new
+            //launch containerfragment + dados sem editar
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setItems(R.array.dialog_lista, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch(which) {
+                        case 0: Intent intent = new Intent(getActivity(), CadastroPagerActivity.class);
+                                intent.putExtra("container_id", mContainer.getIdContainer());
+                                startActivity(intent);
+                                //editar CPagerActivity pra seetar valores via intent etc
+                                break;
+                        case 1: containerDAO.delete(mContainer.getIdContainer());
+                                refresh();
+                                break;
+                    }
+                }
+            });
+            dialog.show();
+            return true;
         }
     }
 
@@ -131,7 +157,7 @@ public class ContainerListFragment extends Fragment {
             alert.setTitle(R.string.bem_vindo);
             alert.setMessage(R.string.primeiro_acesso);
             //alert.setView(R.layout.dialog_bem_vindo);
-            alert.setPositiveButton(R.string.proximo, new DialogInterface.OnClickListener() {
+            alert.setPositiveButton(R.string.seguinte, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     startActivity(new Intent(getActivity(), CadastroPagerActivity.class));

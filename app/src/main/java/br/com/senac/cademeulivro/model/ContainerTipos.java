@@ -14,9 +14,8 @@ public class ContainerTipos implements Serializable{
         this.tipoIcone = tipoIcone;
     }
 
-    public ContainerTipos(String tipoNome, Integer tipoIcone) {
-        this.tipoNome = tipoNome;
-        this.tipoIcone = tipoIcone;
+    public ContainerTipos(Integer _id) {
+        this._id = _id;
     }
 
     public ContainerTipos() {

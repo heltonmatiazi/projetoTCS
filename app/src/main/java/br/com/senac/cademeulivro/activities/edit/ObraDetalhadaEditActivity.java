@@ -38,7 +38,7 @@ public class ObraDetalhadaEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_obra_detalhada_edit);
 
-        //falta num de paginas e da edicao
+        //falta num da edicao
         imgCapa = (ImageView) findViewById(R.id.imageCapa);
         editTitulo = (EditText) findViewById(R.id.editTitulo);
         editAutor = (EditText) findViewById(R.id.editAutor);

@@ -19,7 +19,11 @@ public class Container implements Serializable {
     }
 
     public Integer getTotalObras() {
-        return obrasContidas.size();
+        if(getObrasContidas() == null) {
+            return 0;
+        } else {
+            return getObrasContidas().size();
+        }
     }
 
     public void setTotalObras(Integer totalObras) {

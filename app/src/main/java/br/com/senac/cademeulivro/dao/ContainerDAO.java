@@ -66,10 +66,11 @@ public class ContainerDAO {
 
     private ContentValues getContentFrom(Container c) {
         ContentValues content = new ContentValues();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         content.put("tipo_id", c.getContainerTipos().get_id());
         content.put("nomeContainer", c.getNomeContainer());
         content.put("local", c.getLocalContainer());
-        content.put("ultimaModificacao", c.getUltimaModificacao().toString());
+        content.put("ultimaModificacao", df.format(c.getUltimaModificacao()));
         content.put("biblioteca_id", c.getIdBiblioteca());
 
         return content;

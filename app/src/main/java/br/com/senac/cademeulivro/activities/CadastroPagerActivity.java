@@ -75,7 +75,7 @@ public class CadastroPagerActivity extends AppCompatActivity {
         novoContainer.setLocalContainer(localContainer.getText().toString());
         novoContainer.setUltimaModificacao(new Date());
         novoContainer.setIdBiblioteca(1); //user teste
-        novoContainer.setContainerTipos(tipo);
+        novoContainer.setContainerTipos(new ContainerTipos(mViewPager.getCurrentItem()+1)); //pager conta a partir do 0
         ContainerDAO containerDAO = new ContainerDAO(mDatabase);
         long result = containerDAO.insert(novoContainer);
         if(result > 0) {

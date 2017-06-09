@@ -1,16 +1,17 @@
 package br.com.senac.cademeulivro.model;
 
+import android.graphics.Bitmap;
+
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
 public class Obra {
     private Integer idObra;
-    private int numeroPaginas;
     private String autor;
     private String editora;
     private List<Tag> tags;
-    private byte[] capa;
+    private Bitmap capa;
     private boolean emprestado;
     private String titulo;
     private String descricao;
@@ -66,14 +67,6 @@ public class Obra {
         this.idObra = idObra;
     }
 
-    public int getNumeroPaginas() {
-        return numeroPaginas;
-    }
-
-    public void setNumeroPaginas(int numeroPaginas) {
-        this.numeroPaginas = numeroPaginas;
-    }
-
     public String getAutor() {
         return autor;
     }
@@ -98,19 +91,19 @@ public class Obra {
         this.tags = tags;
     }
 
-    public byte[] getCapa() {
-        return capa;
-    }
-
-    public void setCapa(byte[] capa) {
-        this.capa = capa;
-    }
-
     public int getAnoPublicacao() {
         return anoPublicacao;
     }
 
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public Bitmap getCapa() {
+        return capa;
+    }
+
+    public void setCapa(Bitmap capa) {
+        this.capa = capa;
     }
 }
