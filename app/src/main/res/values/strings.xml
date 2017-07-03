@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">CadeMeuLivro</string>
+
+    <string name="container">Container</string>
+    <string name="salvar">Salvar</string>
+    <string name="local">Local: </string>
+    <string name="ultimaLimpeza">Última Limpeza: </string>
+    <string name="icone">Ícone: </string>
+
+
+    <string name="falha_leitura">Falha ao ler o código!</string>
+    <string name="receber_notificacao">Receber notificações</string>
+    <string name="buttonExcluir">Excluir</string>
+    <string name="sair">Sair</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="aplicacoes">Aplicações: </string>
+    <string name="textViewtituloLogin">Cadê meu livro</string>
+    <string name="LoginFacebook">Fazer Login com Facebook</string>
+    <string name="LoginGoogle">Fazer Login com Google</string>
+    <string name="buttonConcluir">Concluir</string>
+    <string name="buttonCancelar">Cancelar</string>
+    <string name="buttonEditar">Editar</string>
+    <string name="buttonVoltar">Voltar</string>
+    <string name="textViewLogin">Faça login com uma de suas contas:</string>
+    <string name="textViewTag">Tags: </string>
+    <string name="textViewContainer">Container:</string>
+    <string name="textViewDescricao">Descrição:</string>
+    <string name="checkBoxEmprestado">Emprestado</string>
+    <string name="textViewEditora">Editora: </string>
+    <string name="textViewAno">Ano: </string>
+    <string name="textViewIsbn">Isbn:</string>
+    <string name="textViewAutor">Autor: </string>
+    <string name="textViewTitulo">Título: </string>
+    <string name="nome">Nome: </string>
+    <string name="cor_escolhida">Cor escolhida:</string>
+    <string name="resultados_encontrados">Resultados encontrados:</string>
+    <string name="resultados_enc_acervo">Resultados encontrados em seu acervo</string>
+    <string name="resultados_externos">Resultados encontrados na internet</string>
+    <string name="primeiro_acesso">Vamos começar a montar a sua biblioteca. Onde está seu livro?</string>
+    <string name="seguinte">Seguinte</string>
+    <string name="hint_nome_container">Ex: Caixa Preta</string>
+    <string name="hint_local_container">Ex: Quarto</string>
+    <string name="ultima_modif_container">Modificado em: %s</string>
+    <string name="ultima_obra_add">Última obra adicionada: </string>
+    <string name="bem_vindo">Bem Vindo</string>
+    <string-array name="dialog_lista">
+        <item>Editar</item>
+        <item>Excluir</item>
+    </string-array>
+    <string name="notificacao_manutencao">Se passaram 30 dias, você já realizou uma manutenção neste container?</string>
+    <string name="dialog_text">Receber notificações</string>
+
+    <string name="requisicao">Iniciando requisição</string>
+    <string name="codigo_invalido">Este código não é válido!</string>
+    <string name="erro_requisicao">Erro ao realizar a requisição, verifique sua conexão!</string>
+    <string name="leitor">Baixe o leitor de qr code para utilizar esta funcionalidade!</string>
+    <string name="adicionar_tag">Adicionar Tag</string>
+    <string name="adicionar_container">Adicionar Container</string>
+    <string name="ok">Ok</string>
+    <string name="sem_obras">Nenhuma obra utiliza esta tag!</string>
+
+    <string name="facebook_app_id">188132491696991</string>
+</resources>

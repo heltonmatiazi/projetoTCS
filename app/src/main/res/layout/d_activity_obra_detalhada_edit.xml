@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.senac.cademeulivro.activity.obra.ObraDetalhadaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:padding="10dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageViewCapaObraEdit"
+                    android:onClick="adcFoto"
+                    android:src="@mipmap/ic_camera_add"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1.3"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/textView_custom"
+                        android:text="@string/textViewTitulo"
+                        android:layout_gravity="center"
+                        />
+                    <EditText
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editTituloObraEdit"
+                        android:inputType="text"
+                        style="@style/edit_custom"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout  android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/textView_custom"
+                        android:text="@string/textViewAutor"
+                        android:layout_gravity="center"
+                        />
+
+                    <EditText
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editAutorObraEdit"
+                        android:inputType="text"
+                        style="@style/edit_custom"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:text="@string/textViewIsbn"
+                        android:layout_height="wrap_content"
+                        style="@style/textView_custom"
+                        android:layout_gravity="center"
+                        />
+
+                    <EditText
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editIsbnObraEdit"
+                        android:inputType="numberDecimal"
+                        style="@style/edit_custom"
+                        />
+
+                    <ImageButton
+                        android:layout_weight="1.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ImageButtonScanner"
+                        android:onClick="scannerIsbn"
+                        android:src="@mipmap/ic_camera"
+                        android:background="@android:color/transparent"
+                        />
+                </LinearLayout>
+
+                <LinearLayout  android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/textView_custom"
+                        android:text="@string/textViewAno"
+                        android:layout_gravity="center"
+                         />
+
+                    <EditText
+                        android:layout_weight="4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:id="@+id/editAnoObraEdit"
+                        style="@style/edit_custom"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout  android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/textView_custom"
+                        android:text="@string/textViewEditora"
+                        android:layout_gravity="center"
+                        />
+
+                    <EditText
+                        android:layout_weight="2.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editEditoraObraEdit"
+                        android:inputType="text"
+                        style="@style/textView_custom"
+                        />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/checkBoxEmprestado"
+                    android:id="@+id/checkBoxEmprestadoEdit"
+                    app:buttonTint="@color/colorPrimary"
+                />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/textView_custom"
+                    android:text="@string/textViewDescricao"
+                    android:layout_marginLeft="5dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editDescricaoObraEdit"
+                    android:inputType="text"
+                    style="@style/edit_custom"
+                    />
+
+            <LinearLayout  android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textViewContainer"
+                    style="@style/textView_custom"
+                    android:textAlignment="center"
+                    />
+                <TextView
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TextViewContainer"
+                    style="@style/textView_custom"
+                    />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewTag"
+                style="@style/textView_custom"
+                android:layout_marginLeft="5dp"
+                />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/layoutTags"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    >
+
+                    <!-- input das tags como textview via codigo usando o
+                    style = tag_style-->
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="0.7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/buttonConcluir"
+                android:onClick="concluirEditObra"
+                style="@style/buttonTheme"
+                />
+
+            <Button
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/buttonCancelar"
+                android:onClick="cancelarEditObra"
+                style="@style/buttonTheme"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="214dp"
+        android:elevation="6dp"
+        android:src="@mipmap/ic_action_containers"
+        android:onClick="adicionarContainers"
+        app:pressedTranslationZ="12dp"
+        android:visibility="invisible"
+        android:id="@+id/fbContainersObraEdit"
+        app:backgroundTint="@color/azul_base"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="144dp"
+        android:elevation="6dp"
+        android:src="@mipmap/ic_action_tag"
+        android:onClick="adicionarTags"
+        android:id="@+id/fbTagsObraEdit"
+        app:pressedTranslationZ="12dp"
+        android:visibility="invisible"
+        app:backgroundTint="@color/azul_base"
+        />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="60dp"
+        android:src="@mipmap/ic_action_plus"
+        android:elevation="3dp"
+        app:pressedTranslationZ="12dp"
+        android:id="@+id/fbMainObraEdit"
+        app:backgroundTint="@color/colorPrimary"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

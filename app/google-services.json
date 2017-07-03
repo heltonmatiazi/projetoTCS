@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "536184104267",
+    "project_id": "cade-meu-livro"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536184104267:android:7829034e19a7094e",
+        "android_client_info": {
+          "package_name": "senac.com.br"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536184104267-h487g5o2a8o9mvdhriigalko61a9ha8h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "senac.com.br",
+            "certificate_hash": "37cc3a405d7e9989f55664996cea6164c20645cb"
+          }
+        },
+        {
+          "client_id": "536184104267-uefpjenal6d60k8ke96nha6cse892jl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKQXZzGR4Fm7xD2BDdjxV3iaXCmB5erRw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536184104267:android:8e1a5d149d49ab97",
+        "android_client_info": {
+          "package_name": "senac.com.br.cademeulivro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536184104267-q17brtu83gb1b0eaf8guf2llu67m9gnt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "senac.com.br.cademeulivro",
+            "certificate_hash": "37cc3a405d7e9989f55664996cea6164c20645cb"
+          }
+        },
+        {
+          "client_id": "536184104267-uefpjenal6d60k8ke96nha6cse892jl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKQXZzGR4Fm7xD2BDdjxV3iaXCmB5erRw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536184104267:android:f269f57321f28ffe",
+        "android_client_info": {
+          "package_name": "br.com.senac.cademeulivro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536184104267-kfpq79ttpn3i1aobd1g8cukvlpjicpia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.senac.cademeulivro",
+            "certificate_hash": "37cc3a405d7e9989f55664996cea6164c20645cb"
+          }
+        },
+        {
+          "client_id": "536184104267-uefpjenal6d60k8ke96nha6cse892jl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKQXZzGR4Fm7xD2BDdjxV3iaXCmB5erRw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
